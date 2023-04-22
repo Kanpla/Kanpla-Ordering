@@ -9,14 +9,21 @@ Office.onReady(() => {
   // If needed, Office.js is ready to be called
 });
 
+export const prefixDate = (date: number) => (date >= 10 ? date : `0${date}`);
+
 /**
  * Shows a notification when the add-in command is executed.
  * @param event
  */
 function action(event: Office.AddinCommands.Event) {
+  const eventTime = Office.context.mailbox.item.start;
+  const timeString = `${prefixDate(eventTime.getDate())}-${prefixDate(
+    eventTime.getMonth()
+  )}-${eventTime.getFullYear()}`;
+
   const message: Office.NotificationMessageDetails = {
     type: Office.MailboxEnums.ItemNotificationMessageType.InformationalMessage,
-    message: "Performed action.",
+    message: "Performed action123." + timeString,
     icon: "Icon.80x80",
     persistent: true,
   };

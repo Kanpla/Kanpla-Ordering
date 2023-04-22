@@ -1,9 +1,10 @@
 import * as React from "react";
-import { DefaultButton } from "@fluentui/react";
-import Header from "./Header";
+import { Dropdown, PrimaryButton } from "@fluentui/react";
 import HeroList, { HeroListItem } from "./HeroList";
 import Progress from "./Progress";
-
+import { prefixDate } from "../../commands/commands";
+import { APP_NAME, MODULES } from "../../settings";
+/* global Office */
 /* global require */
 
 export interface AppProps {
@@ -27,16 +28,16 @@ export default class App extends React.Component<AppProps, AppState> {
     this.setState({
       listItems: [
         {
-          icon: "Ribbon",
-          primaryText: "Achieve more with Office integration",
+          icon: "NumberedList",
+          primaryText: "Choose module",
         },
         {
-          icon: "Unlock",
-          primaryText: "Unlock features and functionality",
+          icon: "Touch",
+          primaryText: "Order meeting catering",
         },
         {
-          icon: "Design",
-          primaryText: "Create and visualize like a pro",
+          icon: "EventAccepted",
+          primaryText: "Meet and enjoy",
         },
       ],
     });
@@ -61,16 +62,24 @@ export default class App extends React.Component<AppProps, AppState> {
       );
     }
 
+    const eventTime = Office.context.mailbox.item.start;
+    const timeString = `${prefixDate(eventTime.getDate())}-${prefixDate(
+      eventTime.getMonth()
+    )}-${eventTime.getFullYear()}`;
+
     return (
       <div className="ms-welcome">
-        <Header logo={require("./../../../assets/logo-filled.png")} title={this.props.title} message="Welcome" />
-        <HeroList message="Discover what Office Add-ins can do for you today!" items={this.state.listItems}>
-          <p className="ms-font-l">
-            Modify the source files, then click <b>Run</b>.
-          </p>
-          <DefaultButton className="ms-welcome__action" iconProps={{ iconName: "ChevronRight" }} onClick={this.click}>
-            Run
-          </DefaultButton>
+        <HeroList message={`Order food for your own meeting through ${APP_NAME}!`} items={this.state.listItems}>
+          <p className="ms-font-l">Modify the sour c {timeString}</p>
+          <Dropdown
+            options={MODULES}
+            placeholder="Choose a module to order for"
+            label="Choose a module"
+            style={{ width: "100%", marginBottom: "2rem" }}
+          />
+          <PrimaryButton className="ms-welcome__action" onClick={this.click}>
+            Order now
+          </PrimaryButton>
         </HeroList>
       </div>
     );

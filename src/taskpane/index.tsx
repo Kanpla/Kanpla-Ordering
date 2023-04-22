@@ -11,7 +11,7 @@ initializeIcons();
 
 let isOfficeInitialized = false;
 
-const title = "Contoso Task Pane Add-in";
+const title = "Kanpla ordering";
 
 const render = (Component) => {
   ReactDOM.render(
