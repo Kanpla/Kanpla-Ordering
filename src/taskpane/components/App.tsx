@@ -1,11 +1,10 @@
 import * as React from "react";
-import { Dropdown, PrimaryButton } from "@fluentui/react";
 import HeroList, { HeroListItem } from "./HeroList";
 import Progress from "./Progress";
 import { prefixDate } from "../../commands/commands";
-import { APP_NAME, MODULES } from "../../settings";
+import { APP_NAME } from "../../settings";
+import Form from "./comps/Form";
 /* global Office */
-/* global require */
 
 export interface AppProps {
   title: string;
@@ -43,14 +42,9 @@ export default class App extends React.Component<AppProps, AppState> {
     });
   }
 
-  click = async () => {
-    /**
-     * Insert your Outlook code here
-     */
-  };
-
   render() {
     const { title, isOfficeInitialized } = this.props;
+    // const [inputs, setInputs] = React.useState();
 
     if (!isOfficeInitialized) {
       return (
@@ -69,17 +63,14 @@ export default class App extends React.Component<AppProps, AppState> {
 
     return (
       <div className="ms-welcome">
-        <HeroList message={`Order food for your own meeting through ${APP_NAME}!`} items={this.state.listItems}>
-          <p className="ms-font-l">Modify the sour c {timeString}</p>
-          <Dropdown
-            options={MODULES}
-            placeholder="Choose a module to order for"
-            label="Choose a module"
-            style={{ width: "100%", marginBottom: "2rem" }}
-          />
-          <PrimaryButton className="ms-welcome__action" onClick={this.click}>
-            Order now
-          </PrimaryButton>
+        <HeroList message={`Order food for the meeting through ${APP_NAME}!`} items={this.state.listItems}>
+          <p>
+            You are ordering for <b>{Office.context.mailbox.item.subject}</b>
+          </p>
+          <p>
+            The date of the order is <b>{timeString}</b>
+          </p>
+          <Form />
         </HeroList>
       </div>
     );
