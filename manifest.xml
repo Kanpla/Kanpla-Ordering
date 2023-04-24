@@ -80,7 +80,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GroupLabel" DefaultValue="Kanpla ordering"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Order meeting in K1"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Order meeting through Kanpla"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Opens a pane displaying all available properties."/>
