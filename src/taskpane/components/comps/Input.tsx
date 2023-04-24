@@ -61,7 +61,7 @@ const InputComponent = ({ input, setData }: Props) => {
         options={input.options.map((option) => ({ key: option, text: option }))}
         label={input.name}
         placeholder={inputData.placeholder}
-        defaultValue={inputData.value}
+        defaultSelectedKey={inputData.value}
         required={input.required}
         multiSelect={input.multiSelect}
         style={{ width: 300 }}
@@ -87,7 +87,6 @@ const InputComponent = ({ input, setData }: Props) => {
       onChange={(_, e) => setData(inputKey, e)}
     />
   );
-  // return <pre style={{ width: 300 }}>{JSON.stringify(input, null, 2)}</pre>;
 };
 
 export default InputComponent;
