@@ -4,7 +4,7 @@ import Progress from "./Progress";
 import { prefixDate } from "../../commands/commands";
 import { APP_NAME } from "../../settings";
 import Form from "./comps/Form";
-/* global Office */
+/* global Office, require */
 
 export interface AppProps {
   title: string;
@@ -64,10 +64,10 @@ export default class App extends React.Component<AppProps, AppState> {
     return (
       <div className="ms-welcome">
         <HeroList message={`Order food for the meeting through ${APP_NAME}!`} items={this.state.listItems}>
-          <p>
+          <p style={{ textAlign: "center" }}>
             You are ordering for <b>{Office.context.mailbox.item.subject}</b>
           </p>
-          <p>
+          <p style={{ textAlign: "center" }}>
             The date of the order is <b>{timeString}</b>
           </p>
           <Form />
