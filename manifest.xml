@@ -5,7 +5,7 @@
   <ProviderName>Kanpla ApS</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Kanpla Ordering"/>
-  <Description DefaultValue="A template to get started."/>
+  <Description DefaultValue="An add-in to trigger ordering in Kanpla based on your information."/>
   <IconUrl DefaultValue="https://localhost:3001/assets/icon-64.png"/>
   <HighResolutionIconUrl DefaultValue="https://localhost:3001/assets/icon-128.png"/>
   <SupportUrl DefaultValue="https://www.kanpla.dk/help"/>
